@@ -12,7 +12,7 @@ public class Bullet extends Character implements MoveUp {
     }
     @Override
     public void moveUp() {
-        if(getCoordinateX() <= 0){
+        if(getCoordinateY() <= 0){
             keepMoving = false;
             setCoordinateY(Singleton.getInstance().playerShipY);
         }

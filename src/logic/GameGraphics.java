@@ -143,13 +143,13 @@ public class GameGraphics extends JPanel{
     }
     public void moveAlienShips(){
         for (AlienShip alienShip : alienShips) {
-            if (alienShip.getDirectionX() && alienShip.getCoordinateX() + alienShip.getSpeed() <= boardProperties.boardWidth - 10) {
+            if (alienShip.getDirectionX()) {
                 alienShip.moveRight();
-            } else if (!alienShip.getDirectionX() && alienShip.getCoordinateX() - alienShip.getSpeed() >= 10) {
+            } else {
                 alienShip.moveLeft();
             }
         }
-        if (alienShips[boardProperties.alienShipAmount - 1].getCoordinateX() >= boardProperties.boardWidth - 30 ||
+        if (alienShips[boardProperties.alienShipAmount - 1].getCoordinateX() >= boardProperties.boardWidth - (boardProperties.shipWidth + 10) ||
                 alienShips[0].getCoordinateX() <=  10){
             alienShipDirectionChanger();
         }

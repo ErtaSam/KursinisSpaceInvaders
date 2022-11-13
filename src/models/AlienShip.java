@@ -27,11 +27,15 @@ public class AlienShip extends Character implements MoveX, MoveDown {
     }
     @Override
     public void moveLeft() {
-        setCoordinateX(getCoordinateX() - getSpeed());
+        if(getCoordinateX() - getSpeed() >= 10){
+            setCoordinateX(getCoordinateX() - getSpeed());
+        }
     }
     @Override
     public void moveRight() {
-        setCoordinateX(getCoordinateX() + getSpeed());
+        if (getCoordinateX() + getSpeed() <= Singleton.getInstance().boardWidth - (getWidth() + 10)) {
+            setCoordinateX(getCoordinateX() + getSpeed());
+        }
     }
     @Override
     public void moveDown() {

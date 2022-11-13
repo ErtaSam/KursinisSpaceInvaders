@@ -8,14 +8,14 @@ public class PlayerShip extends Character implements MoveX {
     }
     @Override
     public void moveLeft() {
-        if(this.getCoordinateX() > 5){
-            this.setCoordinateX(this.getCoordinateX() - this.getSpeed());
+        if(getCoordinateX() - getSpeed() >= 10){
+            setCoordinateX(getCoordinateX() - getSpeed());
         }
     }
     @Override
     public void moveRight() {
-        if(this.getCoordinateX() < Singleton.getInstance().boardWidth - 5) {
-            this.setCoordinateX(this.getCoordinateX() + this.getSpeed());
+        if(getCoordinateX() + getSpeed() < Singleton.getInstance().boardWidth - (getWidth() + 10)) {
+            setCoordinateX(getCoordinateX() + getSpeed());
         }
     }
 
