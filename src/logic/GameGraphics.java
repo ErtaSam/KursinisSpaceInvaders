@@ -1,5 +1,9 @@
 package logic;
 
+import logic.commandPatternControl.KeyboardController;
+import logic.commandPatternControl.MoveLeftCommand;
+import logic.commandPatternControl.MoveRightCommand;
+import logic.commandPatternControl.ShootCommand;
 import models.AlienShip;
 import models.Bullet;
 import models.PlayerShip;
@@ -41,7 +45,13 @@ public class GameGraphics extends JPanel{
         setBackground(Color.black);
         setSize(dimension);
         setPreferredSize(dimension);
-        addKeyListener(new KeyboardController(player, bullet));
+
+        //keyboard input controlling
+        KeyboardController keyboardController = new KeyboardController();
+        keyboardController.setCommand(39, new MoveRightCommand(player));
+        keyboardController.setCommand(37, new MoveLeftCommand(player));
+        keyboardController.setCommand(32, new ShootCommand(bullet, player));
+        addKeyListener(keyboardController);
         setFocusable(true);
     }
 
@@ -61,7 +71,7 @@ public class GameGraphics extends JPanel{
     {
         Graphics2D graphics2D = (Graphics2D) graphics;
 
-        winningDetection();
+        playerWinningDetection();
         checkBorderReach();
 
         //background
@@ -110,7 +120,7 @@ public class GameGraphics extends JPanel{
         }
     }
 
-    public void winningDetection(){
+    public void playerWinningDetection(){
         int deadCount = 0;
         for (AlienShip alienShip: alienShips) {
              if(!alienShip.isAlive()) deadCount++;
