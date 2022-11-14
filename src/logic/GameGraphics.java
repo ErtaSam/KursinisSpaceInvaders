@@ -111,11 +111,11 @@ public class GameGraphics extends JPanel{
         for (AlienShip alienShip : alienShips) {
             if(alienShip.isAlive() &&
             bullet.getCoordinateX() + bullet.getWidth() >= alienShip.getCoordinateX() &&
-            bullet.getCoordinateX() <= alienShip.getCoordinateX() + alienShip.getWidth() &&
             bullet.getCoordinateY() + bullet.getHeight() >=alienShip.getCoordinateY() &&
+            bullet.getCoordinateX() <= alienShip.getCoordinateX() + alienShip.getWidth() &&
             bullet.getCoordinateY() <= alienShip.getCoordinateY() + alienShip.getHeight()){
                 alienShip.setAlive(false);
-                bullet.setCoordinateX(-1);
+                bullet.setCoordinateY(-1);
             }
         }
     }
